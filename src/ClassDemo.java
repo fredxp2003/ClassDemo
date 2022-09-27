@@ -41,7 +41,7 @@ public class ClassDemo {
                        // System.out.println(sourceMetric + " not supported\n");
                 }
             case "mm":
-            
+
                 switch (targetMetric) {
                     case "m":
                         targetNum = sourceNum / 1000;
@@ -188,3 +188,4 @@ public class ClassDemo {
                 metricConverter(sourceMetric, targetMetric, sourceNum);
             }
         }
+    }}
