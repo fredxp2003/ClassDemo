@@ -190,7 +190,7 @@ public class ClassDemo {
             o8o        o888o `Y8bod8P'   "888" d888b    o888o `Y8bod8P'       `Y8bood8P'  `Y8bod8P' o888o o888o     `8'     `Y8bod8P' d888b      "888" `Y8bod8P' d888b\n    
             """);
         while (true) {
-            System.out.println("Please input your metric to be converted.");
+            System.out.println("Welcome to Metric Converter v1.0\nPlease input your metric to be converted.");
             str = scanner.nextLine();
             if (str.equals("exit")) {
                 System.out.println("Thank you, goodbye!\n");
