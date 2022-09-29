@@ -3,9 +3,9 @@
 To convert a measurement, use the following options:
 
 - km to m, mi, cm, mm
-- g to kg, oz, lb
+- g to kg, oz, lb, mg
 - mm to m, mi, cm, km
-- m to km, mi, cm, mm, yd
+- m to km, mi, cm, mm, yd, ft
 - kg to g, oz, lb
 - kmph to mph, knots
 - c to f, k

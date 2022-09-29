@@ -2,6 +2,7 @@
 // CSI-2140
 // Professor Ma; TA. Li Sa
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ClassDemo {
@@ -24,7 +25,8 @@ public class ClassDemo {
                         targetNum = sourceNum * 1000000;
                         break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
             case "g":
                 switch (targetMetric) {
@@ -37,8 +39,12 @@ public class ClassDemo {
                     case "lb":
                         targetNum = sourceNum / 453.6f;
                         break;
+                    case "mg":
+                        targetNum = sourceNum * 1000;
+                        break;
                     default:
-                       // System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
             case "mm":
 
@@ -56,7 +62,8 @@ public class ClassDemo {
                         targetNum = sourceNum / 1000000;
                         break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
             case "m":
                 switch (targetMetric) {
@@ -75,8 +82,12 @@ public class ClassDemo {
                     case "yd":
                         targetNum = sourceNum * 1.094f;
                         break;
+                    case "ft":
+                        targetNum = sourceNum * 3.281f;
+                        break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
             case "kg":
                 switch (targetMetric) {
@@ -90,7 +101,8 @@ public class ClassDemo {
                         targetNum = sourceNum * 2.205f;
                         break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
             case "kmph":
                 switch (targetMetric) {
@@ -101,8 +113,10 @@ public class ClassDemo {
                         targetNum = sourceNum / 1.852f;
                         break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
+                break;
             case "c":
                 switch (targetMetric) {
                     case "f":
@@ -112,8 +126,10 @@ public class ClassDemo {
                         targetNum = sourceNum + 273.15f;
                         break;
                     default:
-                        //System.out.println(sourceMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
+                break;
             case "L":
                 switch (targetMetric) {
                     case "gal":
@@ -138,8 +154,13 @@ public class ClassDemo {
                         targetNum = sourceNum / 0.005f;
                         break;
                     default:
-                        System.out.println(targetMetric + " not supported\n");
+                        System.out.println(targetMetric + " is not currently supported.  Please try again.");
+                        break;
                 }
+                break;
+            default:
+                System.out.println(sourceMetric + " is not currently supported.  Please try again.");
+                break;
         }
         if (targetNum == 0) {
             System.out.println(sourceMetric + " not supported\n");
@@ -158,8 +179,8 @@ public class ClassDemo {
         float sourceNum;
         String sourceMetric;
         String targetMetric;
-        while (true) {
-            System.out.println("""
+        String[] acceptedMeasurements = {"km", "m", "cm", "mm", "g", "kg", "oz", "lb", "kmph", "mph", "knots", "c", "f", "k", "L", "gal", "qt", "pt", "cup", "oz", "tbsp", "tsp"};
+        System.out.println("""
             ooo        ooooo               .             o8o                   .oooooo.                                                            .                      
             `88.       .888'             .o8             `"'                  d8P'  `Y8b                                                         .o8                      
             888b     d'888   .ooooo.  .o888oo oooo d8b oooo   .ooooo.       888           .ooooo.  ooo. .oo.   oooo    ooo  .ooooo.  oooo d8b .o888oo  .ooooo.  oooo d8b 
@@ -168,6 +189,7 @@ public class ClassDemo {
             8    Y     888  888    .o   888 .  888      888  888   .o8      `88b    ooo  888   888  888   888     `888'    888    .o  888       888 . 888    .o  888     
             o8o        o888o `Y8bod8P'   "888" d888b    o888o `Y8bod8P'       `Y8bood8P'  `Y8bod8P' o888o o888o     `8'     `Y8bod8P' d888b      "888" `Y8bod8P' d888b\n    
             """);
+        while (true) {
             System.out.println("Please input your metric to be converted.");
             str = scanner.nextLine();
             if (str.equals("exit")) {
@@ -182,10 +204,16 @@ public class ClassDemo {
 
                 continue;
             } else {
-                sourceNum = Float.parseFloat(strArray[0]);
-                sourceMetric = strArray[1];
-                targetMetric = strArray[3];
-                metricConverter(sourceMetric, targetMetric, sourceNum);
+                // check if strArray[1] and strArray[3] are in the acceptedMeasurements array
+                if (Arrays.asList(acceptedMeasurements).contains(strArray[1]) && Arrays.asList(acceptedMeasurements).contains(strArray[3])) {
+                    sourceNum = Float.parseFloat(strArray[0]);
+                    sourceMetric = strArray[1];
+                    targetMetric = strArray[3];
+                    metricConverter(sourceMetric, targetMetric, sourceNum);
+                } else {
+                    System.out.println("Your input is not currently handled by this app, please input another query, for example, 1 kg = lb\n");
+                    continue;
+                }                       
             }
         }
     }}
